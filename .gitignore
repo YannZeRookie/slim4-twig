@@ -1,0 +1,9 @@
+.DS_Store
+.idea/
+vendor/
+cache/
+config/config.php
+work/
+composer.phar
+public/.htaccess
+app/config.php
