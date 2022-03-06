@@ -3,12 +3,13 @@
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
+require_once __DIR__ . '/../models/test.php';
+
 class DatabaseController
 {
     public static function database(Request $request, Response $response, $args)
     {
-        global $database;
-        $results = $database->query("SELECT * FROM test")->fetchAll();
+        $results = Test::all();
         return ['results' => $results];
     }
 }

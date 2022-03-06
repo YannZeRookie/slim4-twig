@@ -2,7 +2,5 @@
 
 $development = true;
 
-// See https://www.php.net/manual/ref.pdo-mysql.connection.php
-$database_dsn = "mysql:unix_socket=/tmp/mysql.sock;dbname=YOURDATABASE;charset=utf8mb4";
-$database_user = "YOURUSER";
-$database_password = "YOUTPASSWORD";
+// See https://www.phpactiverecord.org/projects/main/wiki/Configuration__Setup
+$database_connections = ['development' => 'mysql://USER:PASSWORD@HOST/DATABASE?charset=utf8mb4'];

@@ -48,17 +48,10 @@ $app->add(TwigMiddleware::create($app, $twig));
 require_once __DIR__ . '/routes.php';
 
 // Database connection
-$database_options = [
-    \PDO::ATTR_ERRMODE            => \PDO::ERRMODE_EXCEPTION,
-    \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
-    \PDO::ATTR_EMULATE_PREPARES   => false,
-];
-try {
-    $database = new \PDO($database_dsn, $database_user, $database_password, $database_options);
-} catch (\PDOException $e) {
-    throw new \PDOException($e->getMessage(), (int)$e->getCode());
-}
-
+ActiveRecord\Config::initialize(function ($cfg) {
+    $cfg->set_model_directory(__DIR__ . '/models');
+    $cfg->set_connections($database_connections);
+});
 
 // Done, run the app
 $app->run();
