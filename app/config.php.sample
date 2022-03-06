@@ -1,3 +1,8 @@
 <?php
 
 $development = true;
+
+// See https://www.php.net/manual/ref.pdo-mysql.connection.php
+$database_dsn = "mysql:unix_socket=/tmp/mysql.sock;dbname=YOURDATABASE;charset=utf8mb4";
+$database_user = "YOURUSER";
+$database_password = "YOUTPASSWORD";

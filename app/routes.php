@@ -14,6 +14,13 @@ $app->get('/hello[/{name}]', function (Request $request, Response $response, $ar
     return $view->render($response, 'hello.twig', $data);
 });
 
+require_once 'controllers/DatabaseController.php';
+$app->get('/database', function (Request $request, Response $response, $args) {
+    $data = DatabaseController::database($request, $response, $args);
+    $view = Twig::fromRequest($request);
+    return $view->render($response, 'database.twig', $data);
+});
+
 
 /**
  * Catch-all route to serve a 404 Not Found page if none of the routes match
