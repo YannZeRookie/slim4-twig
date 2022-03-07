@@ -5,6 +5,7 @@ use Psr\Log\LoggerInterface;
 use Slim\Factory\AppFactory;
 use Slim\Views\Twig;
 use Slim\Views\TwigMiddleware;
+use Slim\Middleware\Session;
 
 // Load config
 $development = false;
@@ -44,6 +45,14 @@ $twig = Twig::create(__DIR__ . '/views', $twigOptions);
 // Add Twig-View Middleware
 $app->add(TwigMiddleware::create($app, $twig));
 
+// Add session management. See https://github.com/bryanjhv/slim-session
+$app->add(
+    new \Slim\Middleware\Session([
+        'name' => 'test_session',
+        'autorefresh' => true,
+        'lifetime' => '1 hour',
+    ])
+);
 
 // Load our routes
 require_once __DIR__ . '/routes.php';

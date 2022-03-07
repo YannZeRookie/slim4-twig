@@ -9,7 +9,8 @@ use Slim\Views\Twig;
 
 require_once 'controllers/HelloController.php';
 $app->get('/hello[/{name}]', function (Request $request, Response $response, $args) {
-    $data = HelloController::hello($request, $response, $args);
+    $session = new \SlimSession\Helper();
+    $data = HelloController::hello($request, $response, $args, $session);
     $view = Twig::fromRequest($request);
     return $view->render($response, 'hello.twig', $data);
 });
