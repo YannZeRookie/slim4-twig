@@ -6,8 +6,10 @@ use Psr\Http\Server\RequestHandlerInterface;
 use Slim\Exception\HttpNotFoundException;
 use Slim\Views\Twig;
 
+use App\Controllers\HelloController;
 
-require_once 'controllers/HelloController.php';
+global $app;
+
 $app->get('/hello[/{name}]', function (Request $request, Response $response, $args) {
     $session = new \SlimSession\Helper();
     $data = HelloController::hello($request, $response, $args, $session);
